@@ -1,7 +1,7 @@
 # Stage 1: Build the NextJS application
 FROM node:18-alpine AS builder
 WORKDIR /app
-# Copy  package.json and yarn.lock separately to leverage Docker cache
+# Copy package.json and yarn.lock separately to leverage Docker cache
 COPY package.json yarn.lock ./
 # Install dependencies using Yarn
 RUN yarn install --frozen-lockfile
