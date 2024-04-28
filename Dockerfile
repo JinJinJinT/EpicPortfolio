@@ -1,7 +1,7 @@
 # Stage 1: Build the NextJS application
 FROM node:18-alpine AS builder
 WORKDIR /app
-# Copy  package.json and package-lock.json separately to leverage Docker cache
+# Copy package.json and package-lock.json separately to leverage Docker cache
 COPY package.json package-lock.json ./
 # Install dependencies using npm
 RUN npm ci --silent
