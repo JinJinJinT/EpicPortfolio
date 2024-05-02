@@ -1,5 +1,5 @@
 # Stage 1: Build the NextJS application
-FROM node:18-alpine AS builder
+FROM public.ecr.aws/docker/library/node:18-alpine AS builder
 WORKDIR /app
 # Copy package.json and package-lock.json separately to leverage Docker cache
 COPY package.json package-lock.json ./
