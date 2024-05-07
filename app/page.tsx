@@ -1,11 +1,11 @@
 import React from "react";
 import { AuroraBackgroundDemo } from "../components/AuroraBackground";
-import { NavbarDemo } from "../components/NavBar";
+import loading from "../public/loading.gif";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <React.Fragment>
-      <NavbarDemo />
       <AuroraBackgroundDemo />
     </React.Fragment>
   );
