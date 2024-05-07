@@ -3,8 +3,12 @@ import Image from "next/image";
 import background from "../public/landing-background.png";
 import loading from "../public/loading.gif";
 
-const Background = () => {
-  const [loaded, setLoaded] = useState(false);
+interface Props {
+  loaded: boolean;
+  setLoaded: (loaded: boolean) => void;
+}
+
+const Background = ({ loaded, setLoaded }: Props) => {
   return (
     <div>
       <Image
@@ -18,12 +22,12 @@ const Background = () => {
           objectFit: "contain",
           opacity: loaded ? 1 : 0,
         }}
-        className="className=absolute inset-0 h-full w-full object-cover transition-opacity ease-in-out delay-150 duration-1000"
+        className="inset-0 h-full w-full object-cover transition-opacity ease-in-out delay-150 duration-1000"
         onLoad={() => {
           // create promise to delay
           setTimeout(() => {
             setLoaded(true);
-          }, 2000);
+          }, 500);
         }}
       />
 
@@ -31,18 +35,19 @@ const Background = () => {
         src={loading}
         alt="background with two affectionate cats and sliding door"
         quality={100}
-        fill
-        sizes="100vw"
+        sizes="0.5vw"
         style={{
           objectFit: "contain",
           display: loaded ? "none" : "block",
+          height: "100%",
+          width: "95%",
+          scale: "35%",
         }}
-        className="className=absolute inset-0 h-full w-full object-cover mt-32 ml-10 transition-opacity ease-in-out delay-150 duration-400"
+        className="absolute inset-0 transition-opacity ease-in-outp duration-700"
         priority={true}
       />
     </div>
   );
-  //   }
 };
 
 export default Background;
