@@ -75,7 +75,6 @@
     │   ├── next.svg
     │   └── vercel.svg
     ├── README.md
-    ├── README2.md
     ├── tailwind.config.ts
     ├── tsconfig.json
     └── utils
