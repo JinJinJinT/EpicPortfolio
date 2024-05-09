@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 /* :root {
   --foreground-rgb: 0, 0, 0;
@@ -20,6 +18,10 @@ body {
   /* color: rgb(var(--foreground-rgb)); */
   /* padding: 1rem; */
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer utilities {
   .text-balance {

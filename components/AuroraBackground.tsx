@@ -1,16 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { AuroraBackground } from "./ui/aurora-background";
 import Background from "../app/Background";
+import SecretContent from "./SecretContent";
 
 export function AuroraBackgroundDemo() {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
+  const [imageDeleted, setImageDeleted] = useState(true);
+  const imageTargetRef = useRef<HTMLImageElement>(null);
 
+  useEffect(() => {
+    const targetNode = imageTargetRef.current;
+
+    // handle mutation events
+    const handleDeleteMutation: MutationCallback = mutationsList => {
+      for (const mutation of mutationsList) {
+        if (mutation.removedNodes.length > 0) {
+          const removedNodes = Array.from(mutation.removedNodes);
+          for (let node of removedNodes) {
+            if (node === targetNode) {
+              setImageDeleted(true);
+              console.log("Image deleted");
+            }
+          }
+        }
+      }
+    };
+    const observer = new MutationObserver(handleDeleteMutation);
+
+    // configuration of the observer:
+    const config = { childList: true, subtree: true };
+
+    // start observing the parent of the target node
+    if (targetNode && targetNode.parentNode) {
+      observer.observe(targetNode.parentNode, config);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
   return (
     <AuroraBackground>
-      <Background loaded={loaded} setLoaded={setLoaded} />
+      {/* {!imageDeleted ? (
+        <Background
+          loaded={loaded}
+          ref={imageTargetRef}
+          setLoaded={setLoaded}
+        />
+      ) : (
+        <SecretContent />
+      )} */}
+      <SecretContent />
+
       {loaded ? (
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
