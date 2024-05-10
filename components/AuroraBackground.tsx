@@ -1,16 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AuroraBackground } from "./ui/aurora-background";
 import Background from "../app/Background";
 
 export function AuroraBackgroundDemo() {
   const [loaded, setLoaded] = useState(false);
+  const [imageDeleted, setImageDeleted] = useState(false);
+  const imageTargetRef = useRef<HTMLImageElement>(null);
 
   return (
     <AuroraBackground>
       <Background loaded={loaded} setLoaded={setLoaded} />
+      {/* {!imageDeleted ? (
+        <Background
+          loaded={loaded}
+          ref={imageTargetRef}
+          setLoaded={setLoaded}
+        />
+      ) : (
+        <SecretContent />
+      )} */}
+      {/* <SecretContent /> */}
+
       {loaded ? (
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}

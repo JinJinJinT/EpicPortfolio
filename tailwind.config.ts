@@ -15,6 +15,7 @@ const config: Config = {
     extend: {
       animation: {
         aurora: "aurora 60s linear infinite",
+        auroraDark: "aurora 60s linear infinite",
       },
       keyframes: {
         aurora: {
@@ -30,6 +31,12 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      colors: {
+        lightAuroraBackground: "#fae6cf",
+        "aurora-green": "#cffad0",
+        "aurora-blue": "#cfe3fa",
+        "aurora-purple": "#facff8",
       },
     },
   },
