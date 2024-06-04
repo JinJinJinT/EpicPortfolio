@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
@@ -37,6 +38,11 @@ const config: Config = {
         "aurora-green": "#cffad0",
         "aurora-blue": "#cfe3fa",
         "aurora-purple": "#facff8",
+        "light-text": "#fffbf4",
+        "dark-text": "#241d1d",
+      },
+      fontFamily: {
+        sans: ["Helvetica", "Arial", "sans-serif"],
       },
     },
   },
@@ -45,15 +51,15 @@ const config: Config = {
     themes: [
       {
         mytheme: {
-          primary: "#d8b4fe",
+          primary: "#fffbf4",
 
-          secondary: "#fed7aa",
+          secondary: "#241d1d",
 
           accent: "#fde68a",
 
           neutral: "#78716c",
 
-          "base-100": "#e0e7ff",
+          "base-100": "#fffbf4",
 
           info: "#155e75",
 
@@ -62,27 +68,8 @@ const config: Config = {
           warning: "#f59e0b",
 
           error: "#ef4444",
-        },
-      },
-      {
-        mytheme2: {
-          primary: "#ed959f",
 
-          secondary: "#edbb57",
-
-          accent: "#e0d623",
-
-          neutral: "#241825",
-
-          "base-100": "#313149",
-
-          info: "#6e80d4",
-
-          success: "#15745e",
-
-          warning: "#f7b926",
-
-          error: "#eb4d47",
+          darkBackground: "#241d1d",
         },
       },
     ],

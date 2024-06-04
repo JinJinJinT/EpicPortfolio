@@ -11,6 +11,7 @@ const ThemeSwitcher = () => {
         onClick={() => {
           setTheme(theme === "light" ? "dark" : "light");
           document.documentElement.classList.toggle("dark");
+          document.documentElement.classList.toggle("dark-background");
         }}
       >
         {theme === "light" ? (

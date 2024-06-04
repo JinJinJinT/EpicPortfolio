@@ -16,10 +16,39 @@
   }
 } */
 
-body {
-  /* color: rgb(var(--foreground-rgb)); */
-  /* padding: 1rem; */
+body, html {
+  transition: background-color 1s ease;
 }
+
+.dark-background {
+  background-color: #241d1d;
+}
+
+.strokeme {
+  -webkit-text-stroke: 1.5px var(--dark-text);
+}
+
+.garden, .floor, .tree {
+  width: 100vw;
+}
+
+.tree {
+  right: 5vw;
+}
+
+.garden {
+  right: 100vw;
+}
+
+.floor {
+  top: 15vw;
+  right: 200vw;
+}
+
+body.dark .strokeme, html.dark .strokeme {
+  -webkit-text-stroke: 1px var(--light-text);
+}
+
 
 @layer utilities {
   .text-balance {
