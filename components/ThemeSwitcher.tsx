@@ -7,7 +7,7 @@ const ThemeSwitcher = () => {
     <div className="flex md:flex md:flex-grow flex-row-reverse space-x-1">
       <button
         aria-hidden="true"
-        className="focus:outline-none hover:text-slate-400 focus:z-10  dark:text-gray-400 dark:hover:text-gray-200 dark:focus:z-10 transition-colors duration-200 ease-in-out"
+        className="focus:outline-none hover:text-slate-400 focus:z-10  dark:text-gray-400 dark:hover:text-gray-200 dark:focus:z-10 transition-colors duration-1000 ease-in-out"
         onClick={() => {
           setTheme(theme === "light" ? "dark" : "light");
           document.documentElement.classList.toggle("dark");

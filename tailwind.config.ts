@@ -11,7 +11,8 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "selector",
+  darkMode: ["selector"],
+  mode: "jit",
   theme: {
     extend: {
       animation: {
@@ -32,6 +33,16 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "tree-light": "url('../public/light/tree.png')",
+        "tree-dark": "url('../public/dark/tree-dark.png')",
+        "grass-light": "url('../public/light/grass.png')",
+        "grass-dark": "url('../public/dark/grass-dark.png')",
+        "floor-light": "url('../public/light/floor.png')",
+        "floor-dark": "url('../public/dark/floor-dark.png')",
+        "door-light": "url('../public/light/door.png')",
+        "door-dark": "url('../public/dark/door-dark.png')",
+        sun: "url('../public/light/sun.png')",
+        moon: "url('../public/dark/moon.png')",
       },
       colors: {
         lightAuroraBackground: "#fae6cf",
@@ -51,15 +62,16 @@ const config: Config = {
     themes: [
       {
         mytheme: {
-          primary: "#fffbf4",
+          primary: "#fffbf4", // light back
 
-          secondary: "#241d1d",
+          secondary: "#241d1d", // dark back (in css)
 
-          accent: "#fde68a",
+          accent: "#fcf0d1", // light accent (rectangle)
 
-          neutral: "#78716c",
+          // neutral: "#767784", // dark accent
+          neutral: "#7b7673", // dark accent
 
-          "base-100": "#fffbf4",
+          "base-100": "#fffbf4", // light back
 
           info: "#155e75",
 
