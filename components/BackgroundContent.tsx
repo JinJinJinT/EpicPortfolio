@@ -1,17 +1,17 @@
 import React from "react";
 import Image from "next/image";
 
-import sun from "../public/light/sun.png";
-import moon from "../public/dark/moon.png";
+//import sun from "../public/light/sun.png";
+//import moon from "../public/dark/moon.png";
 
 //import tree from "../public/light/tree.png";
-import darkTree from "../public/dark/tree-dark.png";
+//import darkTree from "../public/dark/tree-dark.png";
 
-import grass from "../public/light/grass.png";
-import darkGrass from "../public/dark/grass-dark.png";
+//import grass from "../public/light/grass.png";
+//import darkGrass from "../public/dark/grass-dark.png";
 
-import floor from "../public/light/floor.png";
-import darkFloor from "../public/dark/floor-dark.png";
+//import floor from "../public/light/floor.png";
+//import darkFloor from "../public/dark/floor-dark.png";
 
 const BackgroundContent = () => {
   //   const treeImage = darkModeActive ? tree : darkTree;
@@ -20,9 +20,9 @@ const BackgroundContent = () => {
   //   const lightSource = darkModeActive ? moon : sun;
 
   //const treeImage = tree;
-  const grassImage = grass;
-  const floorImage = floor;
-  const lightSource = sun;
+  //const grassImage = grass;
+  //const floorImage = floor;
+  //const lightSource = sun;
   return (
     <div className="relative overflow-hidden mt-7">
       <div className="relative bg-contain bg-no-repeat w-[100vw] h-[40vw] right-[4vw] z-[-30] bg-tree-light dark:bg-tree-dark m-0 p-0 opacity-70"></div>
