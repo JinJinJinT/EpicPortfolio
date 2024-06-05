@@ -34,7 +34,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "tree-light": "url('/light/tree.png')",
-        "tree-dark": "url('./dark/tree-dark.png')",
+        "tree-dark": "url('/dark/tree-dark.png')",
         "grass-light": "url('/light/grass.png')",
         "grass-dark": "url('/dark/grass-dark.png')",
         "floor-light": "url('/light/floor.png')",
