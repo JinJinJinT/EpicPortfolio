@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
@@ -10,7 +11,8 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "selector",
+  darkMode: ["selector"],
+  mode: "jit",
   theme: {
     extend: {
       animation: {
@@ -31,12 +33,27 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "tree-light": "url('../public/light/tree.png')",
+        "tree-dark": "url('../public/dark/tree-dark.png')",
+        "grass-light": "url('../public/light/grass.png')",
+        "grass-dark": "url('../public/dark/grass-dark.png')",
+        "floor-light": "url('../public/light/floor.png')",
+        "floor-dark": "url('../public/dark/floor-dark.png')",
+        "door-light": "url('../public/light/door.png')",
+        "door-dark": "url('../public/dark/door-dark.png')",
+        sun: "url('../public/light/sun.png')",
+        moon: "url('../public/dark/moon.png')",
       },
       colors: {
         lightAuroraBackground: "#fae6cf",
         "aurora-green": "#cffad0",
         "aurora-blue": "#cfe3fa",
         "aurora-purple": "#facff8",
+        "light-text": "#fffbf4",
+        "dark-text": "#241d1d",
+      },
+      fontFamily: {
+        sans: ["Helvetica", "Arial", "sans-serif"],
       },
     },
   },
@@ -45,15 +62,16 @@ const config: Config = {
     themes: [
       {
         mytheme: {
-          primary: "#d8b4fe",
+          primary: "#fffbf4", // light back
 
-          secondary: "#fed7aa",
+          secondary: "#241d1d", // dark back (in css)
 
-          accent: "#fde68a",
+          accent: "#fcf0d1", // light accent (rectangle)
 
-          neutral: "#78716c",
+          // neutral: "#767784", // dark accent
+          neutral: "#7b7673", // dark accent
 
-          "base-100": "#e0e7ff",
+          "base-100": "#fffbf4", // light back
 
           info: "#155e75",
 
@@ -62,27 +80,8 @@ const config: Config = {
           warning: "#f59e0b",
 
           error: "#ef4444",
-        },
-      },
-      {
-        mytheme2: {
-          primary: "#ed959f",
 
-          secondary: "#edbb57",
-
-          accent: "#e0d623",
-
-          neutral: "#241825",
-
-          "base-100": "#313149",
-
-          info: "#6e80d4",
-
-          success: "#15745e",
-
-          warning: "#f7b926",
-
-          error: "#eb4d47",
+          darkBackground: "#241d1d",
         },
       },
     ],

@@ -22,7 +22,7 @@ const Background = ({ loaded, setLoaded }: Props) => {
           objectFit: "contain",
           opacity: loaded ? 1 : 0,
         }}
-        className="inset-0 h-full w-full object-cover transition-opacity ease-in-out delay-150 duration-1000"
+        className="inset-0 h-full w-full object-cover"
         onLoad={() => {
           // create promise to delay
           setTimeout(() => {

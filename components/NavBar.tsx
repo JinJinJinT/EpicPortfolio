@@ -7,12 +7,54 @@ import ThemeSwitcher from "./ThemeSwitcher";
 export function NavbarDemo() {
   return (
     <div className="relative w-full flex items-center justify-center">
-      <Navbar className="top-2" />
+      <OldNavbar className="top-2" />
     </div>
   );
 }
 
-function Navbar({ className }: { className?: string }) {
+export function NavBar() {
+  return (
+    <div className="relative w-full flex items-center justify-center mt-4">
+      <JapaneseNavBar className="top-2" />
+    </div>
+  );
+}
+
+function JapaneseNavBar({ className }: { className?: string }) {
+  return (
+    <nav
+      className={cn(
+        "flex items-center justify-center",
+        "sm:text-sm md:text-base lg:text-lg",
+        "sm:flex-col md:flex-row",
+        "space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6",
+        className
+      )}
+      style={{ fontSize: "calc(10px + 2vmin)" }}
+    >
+      <ul className="flex flex-wrap justify-center sm:justify-start sm:flex-nowrap space-x-4">
+        {["projects", "about me", "contact", "cv", "github"].map((item, i) => (
+          <React.Fragment key={item}>
+            <li>
+              <a
+                href="#"
+                className="hover:text-pink-500 dark:text-base-100 dark:hover:text-orange-500 transition-none"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item}
+              </a>
+            </li>
+            {i <= 4 && <li className="text-gray-500">|</li>}
+            {i === 4 && <ThemeSwitcher />}
+          </React.Fragment>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+function OldNavbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div
@@ -63,7 +105,7 @@ function Navbar({ className }: { className?: string }) {
             <HoveredLink href="/enterprise">Enterprise</HoveredLink>
           </div>
         </MenuItem>
-        <ThemeSwitcher />
+        {/* <ThemeSwitcher /> */}
       </Menu>
     </div>
   );
