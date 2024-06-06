@@ -38,7 +38,7 @@ function JapaneseNavBar({ className }: { className?: string }) {
             <li>
               <a
                 href="#"
-                className="hover:text-pink-500 dark:text-base-100 dark:hover:text-orange-500 transition-none"
+                className="hover:text-pink-300 dark:text-base-100 dark:hover:text-orange-500 transition-none"
                 target="_blank"
                 rel="noopener noreferrer"
               >

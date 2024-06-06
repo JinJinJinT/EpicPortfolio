@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NavBar } from "../components/NavBar";
 import React from "react";
-import ThemeWrapper from "./ThemeWrapper";
+import FadeInWrapper from "./FadeInWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="mytheme">
       <body className={`${inter.className} font-sans`}>
-        <NavBar />
-        <main>{children}</main>
+        <FadeInWrapper>{children}</FadeInWrapper>
       </body>
     </html>
   );
