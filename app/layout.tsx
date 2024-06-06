@@ -20,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="mytheme">
       <body className={`${inter.className} font-sans`}>
-        <FadeInWrapper>{children}</FadeInWrapper>
+        <div className="overflow-hidden">
+          <FadeInWrapper>{children}</FadeInWrapper>
+        </div>
       </body>
     </html>
   );

@@ -44,10 +44,10 @@ const FadeInWrapper = ({ children }: { children: React.ReactNode }) => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 1.0, ease: "easeInOut" }}
-          className="overflow-hidden"
+          className=""
         >
           <NavBar />
-          <main>{children}</main>{" "}
+          <main>{children}</main>
           {/* <div className="absolute bg-contain bg-no-repeat h-[90vw] bottom-[270vw] left-[87vw] z-[0] bg-door-light dark:bg-door-dark border border-black"></div> */}
           <div className="absolute bg-contain bg-no-repeat bottom-[130vw] h-[110vw] w-[110vw] left-[84vw] z-[-10] bg-door-light dark:bg-door-dark"></div>
         </motion.div>
