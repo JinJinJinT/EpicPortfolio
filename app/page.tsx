@@ -5,6 +5,7 @@ import loading from "../public/loading.gif";
 import Image from "next/image";
 import BackgroundContent from "@/components/BackgroundContent";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 export default function Home() {
   return (

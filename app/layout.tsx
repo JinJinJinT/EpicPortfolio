@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="mytheme">
       <body className={`${inter.className} font-sans`}>
-        <NavBar></NavBar>
+        <NavBar />
         <main>{children}</main>
       </body>
     </html>
