@@ -42,6 +42,34 @@ const BackgroundContent = () => {
           <div className="relative bg-contain bg-no-repeat h-[15vw] bottom-[123vw] left-[1vw] z-[-30] bg-sun dark:bg-moon opacity-60"></div>
           <div className="relative bg-contain bg-no-repeat h-[70vw] bottom-[143.5vw] left-[10vw] z-[0] bg-cars"></div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0.0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 3.0,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+        >
+          <article className="absolute flex flex-col gap-4 items-center justify-center w-[70vw] left-[10vw] bottom-[145vw] md:bottom-[175vw] z-[50]">
+            <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
+              Portfolio Development In Progress!
+            </div>
+            <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+              Check Back Soon!
+            </div>
+            <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+              <a
+                href="https://github.com/JinJinJinT/EpicPortfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+            </button>
+          </article>
+        </motion.div>
       </motion.div>
 
       {/* Only here to preload the dark mode images and gets deleted later */}
