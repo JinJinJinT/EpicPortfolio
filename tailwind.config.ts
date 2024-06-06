@@ -33,16 +33,17 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "tree-light": "url('../public/light/tree.png')",
-        "tree-dark": "url('../public/dark/tree-dark.png')",
-        "grass-light": "url('../public/light/grass.png')",
-        "grass-dark": "url('../public/dark/grass-dark.png')",
-        "floor-light": "url('../public/light/floor.png')",
-        "floor-dark": "url('../public/dark/floor-dark.png')",
-        "door-light": "url('../public/light/door.png')",
-        "door-dark": "url('../public/dark/door-dark.png')",
-        sun: "url('../public/light/sun.png')",
-        moon: "url('../public/dark/moon.png')",
+        "tree-light": "url('/images/tree.PNG')",
+        "tree-dark": "url('/images/tree-dark.PNG')",
+        "grass-light": "url('/images/grass.PNG')",
+        "grass-dark": "url('/images/grass-dark.PNG')",
+        "floor-light": "url('/images/floor.PNG')",
+        "floor-dark": "url('/images/floor-dark.PNG')",
+        "door-light": "url('/images/door.PNG')",
+        "door-dark": "url('/images/door-dark.PNG')",
+        sun: "url('/images/sun.PNG')",
+        moon: "url('/images/moon.PNG')",
+        cars: "url('/images/cars.PNG')",
       },
       colors: {
         lightAuroraBackground: "#fae6cf",
@@ -62,7 +63,7 @@ const config: Config = {
     themes: [
       {
         mytheme: {
-          primary: "#fffbf4", // light back
+          primary: "#fff8eb", // light back (text)
 
           secondary: "#241d1d", // dark back (in css)
 
@@ -71,7 +72,7 @@ const config: Config = {
           // neutral: "#767784", // dark accent
           neutral: "#7b7673", // dark accent
 
-          "base-100": "#fffbf4", // light back
+          "base-100": "#fff8eb", // light back (background)
 
           info: "#155e75",
 
