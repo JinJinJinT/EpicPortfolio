@@ -31,34 +31,33 @@ export default function Home() {
       <article>
         <BackgroundContent />
       </article>
-      {/* <motion.div
+      <motion.div
         initial={{ opacity: 0.0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
-          delay: 0.5,
+          delay: 3.0,
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4"
-      > */}
-      {/* <article className="relative flex flex-col gap-4 items-center justify-center px-4 bottom-[155vw]">
-        <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-          Portfolio Development In Progress!
-        </div>
-        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
-          Check Back Soon!
-        </div>
-        <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
-          <a
-            href="https://github.com/JinJinJinT/EpicPortfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-        </button>
-      </article> */}
-      {/* </motion.div> */}
+      >
+        <article className="relative flex flex-col gap-4 items-center justify-center px-4 bottom-[190vw]">
+          <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
+            Portfolio Development In Progress!
+          </div>
+          <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+            Check Back Soon!
+          </div>
+          <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+            <a
+              href="https://github.com/JinJinJinT/EpicPortfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </button>
+        </article>
+      </motion.div>
     </section>
   );
 }

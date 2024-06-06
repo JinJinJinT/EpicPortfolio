@@ -43,6 +43,7 @@ const config: Config = {
         "door-dark": "url('/images/door-dark.PNG')",
         sun: "url('/images/sun.PNG')",
         moon: "url('/images/moon.PNG')",
+        cars: "url('/images/cars.PNG')",
       },
       colors: {
         lightAuroraBackground: "#fae6cf",
@@ -62,7 +63,7 @@ const config: Config = {
     themes: [
       {
         mytheme: {
-          primary: "#fffbf4", // light back
+          primary: "#fff8eb", // light back (text)
 
           secondary: "#241d1d", // dark back (in css)
 
@@ -71,7 +72,7 @@ const config: Config = {
           // neutral: "#767784", // dark accent
           neutral: "#7b7673", // dark accent
 
-          "base-100": "#fffbf4", // light back
+          "base-100": "#fff8eb", // light back (background)
 
           info: "#155e75",
 
