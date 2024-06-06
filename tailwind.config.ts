@@ -33,24 +33,16 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "tree-light":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/tree.PNG')",
-        "tree-dark":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/tree-dark.PNG')",
-        "grass-light":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/grass.PNG')",
-        "grass-dark":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/grass-dark.PNG')",
-        "floor-light":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/floor.PNG')",
-        "floor-dark":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/floor-dark.PNG')",
-        "door-light":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/door.PNG')",
-        "door-dark":
-          "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/door-dark.PNG')",
-        sun: "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/sun.PNG')",
-        moon: "url('https://epic-portfolio-assets.s3.us-west-2.amazonaws.com/moon.PNG')",
+        "tree-light": "url('/images/tree.PNG')",
+        "tree-dark": "url('/images/tree-dark.PNG')",
+        "grass-light": "url('/images/grass.PNG')",
+        "grass-dark": "url('/images/grass-dark.PNG')",
+        "floor-light": "url('/images/floor.PNG')",
+        "floor-dark": "url('/images/floor-dark.PNG')",
+        "door-light": "url('/images/door.PNG')",
+        "door-dark": "url('/images/door-dark.PNG')",
+        sun: "url('/images/sun.PNG')",
+        moon: "url('/images/moon.PNG')",
       },
       colors: {
         lightAuroraBackground: "#fae6cf",

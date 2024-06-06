@@ -40,7 +40,7 @@ export default function Home() {
         }}
         className="relative flex flex-col gap-4 items-center justify-center px-4"
       > */}
-      <article className="relative flex flex-col gap-4 items-center justify-center px-4 bottom-[155vw]">
+      {/* <article className="relative flex flex-col gap-4 items-center justify-center px-4 bottom-[155vw]">
         <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
           Portfolio Development In Progress!
         </div>
@@ -56,7 +56,7 @@ export default function Home() {
             GitHub
           </a>
         </button>
-      </article>
+      </article> */}
       {/* </motion.div> */}
     </section>
   );
