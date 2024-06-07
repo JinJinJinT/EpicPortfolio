@@ -25,12 +25,6 @@ export default function RootLayout({
   preload("/images/sun.PNG", { as: "image" });
   preload("/images/grass.PNG", { as: "image" });
   preload("/images/floor.PNG", { as: "image" });
-  preload("/images/moon.PNG", { as: "image" });
-  preload("/images/tree-dark.PNG", { as: "image" });
-  // preload("/images/cars-dark.png", { as: "image" });
-  preload("/images/door-dark.PNG", { as: "image" });
-  preload("/images/grass-dark.PNG", { as: "image" });
-  preload("/images/floor-dark.PNG", { as: "image" });
 
   return (
     <html lang="en" data-theme="mytheme">

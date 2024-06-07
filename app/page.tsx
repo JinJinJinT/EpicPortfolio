@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import NextImage from "next/image";
 import loading from "../public/loading.gif";
 import { NavBar } from "@/components/NavBar";
+import { preload } from "react-dom";
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
@@ -44,10 +45,12 @@ export default function Home() {
     // Promise.all to wait for all images to load
     Promise.all(imageUrls.map(url => loadImage(url)))
       .then(() => {
-        // const toDelete = document.querySelectorAll(".toDelete");
-        // toDelete.forEach(div => {
-        //   div.remove();
-        // });
+        preload("/images/moon.PNG", { as: "image" });
+        preload("/images/tree-dark.PNG", { as: "image" });
+        // preload("/images/cars-dark.png", { as: "image" });
+        preload("/images/door-dark.PNG", { as: "image" });
+        preload("/images/grass-dark.PNG", { as: "image" });
+        preload("/images/floor-dark.PNG", { as: "image" });
 
         const endTime = Date.now();
         const timeDiff = endTime - startTime;
