@@ -1,25 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
-const BackgroundContent = () => {
-  const [isLoading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Set a timer to hide the loading GIF after 2 seconds
-    const timer = setTimeout(() => {
-      setLoading(false);
-      // delete all divs with class "toDelete"
-      const toDelete = document.querySelectorAll(".toDelete");
-      toDelete.forEach(div => {
-        div.remove();
-      });
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+const BackgroundContent = ({ isLoading }: { isLoading: boolean }) => {
   return (
     <React.Fragment>
       <motion.div

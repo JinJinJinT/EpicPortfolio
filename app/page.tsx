@@ -7,7 +7,7 @@ import BackgroundContent from "@/components/BackgroundContent";
 import { motion } from "framer-motion";
 import Head from "next/head";
 
-export default function Home() {
+export default function Home({ isLoading }: { isLoading: boolean }) {
   return (
     <section>
       <article>
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
       </article>
       <article>
-        <BackgroundContent />
+        <BackgroundContent isLoading={isLoading} />
       </article>
     </section>
   );
