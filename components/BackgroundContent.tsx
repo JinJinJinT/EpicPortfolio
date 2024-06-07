@@ -57,11 +57,11 @@ const BackgroundContent = ({ isLoading }: { isLoading: boolean }) => {
 
       {/* Only here to preload the dark mode images and gets deleted later */}
       {/* <div className="overflow-hidden h-0 w-0"> */}
-      <div className="invisible bg-tree-dark toDelete"></div>
+      {/* <div className="invisible bg-tree-dark toDelete"></div>
       <div className="invisible bg-grass-dark toDelete"></div>
       <div className="invisible bg-floor-dark toDelete"></div>
       <div className="invisible bg-door-dark toDelete"></div>
-      <div className="invisible bg-moon toDelete"></div>
+      <div className="invisible bg-moon toDelete"></div> */}
       {/* </div> */}
     </React.Fragment>
   );
