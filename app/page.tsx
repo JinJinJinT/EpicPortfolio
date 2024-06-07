@@ -4,74 +4,41 @@ import PageContent from "@/components/PageContent";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import loading from "../public/loading.gif";
-import { NavBar } from "@/components/NavBar";
-import { preload } from "react-dom";
+
+const NUMBER_OF_IMAGES = 5;
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(NUMBER_OF_IMAGES);
+
+  //const startTime: number = Date.now();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const startTime = Date.now();
-
-    // URLs of the images you want to preload
-    const imageUrls = [
-      "/images/tree.PNG",
-      // "/images/tree-dark.PNG",
-      "/images/grass.PNG",
-      // "/images/grass-dark.PNG",
-      "/images/floor.PNG",
-      // "/images/floor-dark.PNG",
-      "/images/sun.PNG",
-      // "/images/moon.PNG",
-      "/images/cars.PNG",
-      // "/images/cars-dark.png",
-      "/images/door.PNG",
-      // "images/door-dark.PNG",
-    ];
-
-    // Create a promise for each image to load
-    const loadImage = (url: string) => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.src = url;
-        img.onload = () => resolve(img.src);
-        img.onerror = () => reject(new Error(`Failed to load image at ${url}`));
-      });
-    };
-
-    let timeoutId: NodeJS.Timeout;
-
-    // Promise.all to wait for all images to load
-    Promise.all(imageUrls.map(url => loadImage(url)))
-      .then(() => {
-        preload("/images/moon.PNG", { as: "image" });
-        preload("/images/tree-dark.PNG", { as: "image" });
-        // preload("/images/cars-dark.png", { as: "image" });
-        preload("/images/door-dark.PNG", { as: "image" });
-        preload("/images/grass-dark.PNG", { as: "image" });
-        preload("/images/floor-dark.PNG", { as: "image" });
-
-        const endTime = Date.now();
-        const timeDiff = endTime - startTime;
-
-        // create delay if timeDiff < 2000
-        if (timeDiff < 2000) {
-          const delay = 2000 - timeDiff;
-          timeoutId = setTimeout(() => {
-            setLoading(false);
-            window.scrollTo(0, 0);
-          }, delay);
-        } else {
-          setLoading(false);
-        }
-      })
-      .catch(error => console.error("Error loading images:", error));
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
   }, []);
+
+  useEffect(() => {
+    console.log(`Images left: ${imagesLoaded}`);
+    // let timeoutId: NodeJS.Timeout;
+    if (imagesLoaded === 0) {
+      //   const endTime = Date.now();
+      //   const timeDiff = endTime - startTime;
+
+      //   // create delay if timeDiff < 2000
+      //   if (timeDiff < 2000) {
+      //     const delay = 2000 - timeDiff;
+      //     timeoutId = setTimeout(() => {
+      //       setLoading(false);
+      //     }, delay);
+      //   } else {
+      setLoading(false);
+      //   }
+      window.scrollTo(0, 0);
+    }
+    // return () => {
+    //   if (timeoutId) clearTimeout(timeoutId);
+    // };
+  }, [imagesLoaded]);
 
   // make page unscrollable when loading
   useEffect(() => {
@@ -107,6 +74,7 @@ export default function Home() {
           }}
           className="inset-0"
           priority={true}
+          unoptimized={true}
         />
       </motion.div>
 
@@ -118,8 +86,11 @@ export default function Home() {
           transition={{ delay: 0.5, duration: 1.0, ease: "easeInOut" }}
           className=""
         >
-          <NavBar />
-          <PageContent isLoading={isLoading} />
+          <PageContent
+            isLoading={isLoading}
+            imagesLoaded={imagesLoaded}
+            setImagesLoaded={setImagesLoaded}
+          />
           {/* <div className="absolute bg-contain bg-no-repeat h-[90vw] bottom-[270vw] left-[87vw] z-[0] bg-door-light dark:bg-door-dark border border-black"></div> */}
           <div className="absolute bg-contain bg-no-repeat bottom-[130vw] h-[110vw] w-[110vw] left-[84vw] z-[-10] bg-door-light dark:bg-door-dark"></div>
         </motion.div>

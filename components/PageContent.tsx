@@ -1,7 +1,11 @@
 import React from "react";
-import BackgroundContent from "./BackgroundContent";
+import BackgroundContent, { FlowDownProps } from "./BackgroundContent";
 
-const PageContent = ({ isLoading }: { isLoading: boolean }) => {
+const PageContent = ({
+  isLoading,
+  imagesLoaded,
+  setImagesLoaded,
+}: FlowDownProps) => {
   return (
     <section>
       <article>
@@ -22,7 +26,11 @@ const PageContent = ({ isLoading }: { isLoading: boolean }) => {
         </div>
       </article>
       <article>
-        <BackgroundContent isLoading={isLoading} />
+        <BackgroundContent
+          isLoading={isLoading}
+          imagesLoaded={imagesLoaded}
+          setImagesLoaded={setImagesLoaded}
+        />
       </article>
     </section>
   );
