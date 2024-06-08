@@ -12,6 +12,12 @@ const ThemeSwitcher = () => {
           setTheme(theme === "light" ? "dark" : "light");
           document.documentElement.classList.toggle("dark");
           document.documentElement.classList.toggle("dark-background");
+          document.querySelectorAll(".light-image").forEach(el => {
+            (el as HTMLElement).classList.toggle("hidden");
+          });
+          document.querySelectorAll(".dark-image").forEach(el => {
+            (el as HTMLElement).classList.toggle("hidden");
+          });
         }}
       >
         {theme === "light" ? (

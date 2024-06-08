@@ -1,13 +1,26 @@
 import React from "react";
-import BackgroundContent from "./BackgroundContent";
+import BackgroundContent, { FlowDownProps } from "./BackgroundContent";
 
-const PageContent = ({ isLoading }: { isLoading: boolean }) => {
+const PageContent = ({
+  isLoading,
+  imagesLoaded,
+  setImagesLoaded,
+}: FlowDownProps) => {
   return (
     <section>
       <article>
         <div className="ml-7 mt-8">
-          <h1 className="text-6xl font-bold text-primary dark:text-secondary strokeme tracking-wider">
-            JIN<br></br>TERADA WHITE
+          <h1
+            className="text-6xl font-bold text-primary dark:text-secondary strokeme tracking-wider"
+            data-text="JIN"
+          >
+            JIN
+          </h1>
+          <h1
+            className="text-6xl font-bold text-primary dark:text-secondary strokeme-fixed tracking-wider"
+            data-text="TERADA WHITE"
+          >
+            TERADA WHITE
           </h1>
         </div>
         <div className="relative ml-7">
@@ -22,7 +35,11 @@ const PageContent = ({ isLoading }: { isLoading: boolean }) => {
         </div>
       </article>
       <article>
-        <BackgroundContent isLoading={isLoading} />
+        <BackgroundContent
+          isLoading={isLoading}
+          imagesLoaded={imagesLoaded}
+          setImagesLoaded={setImagesLoaded}
+        />
       </article>
     </section>
   );

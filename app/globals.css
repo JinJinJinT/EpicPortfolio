@@ -25,6 +25,10 @@ body, html {
   transition: background-color 1s ease;
 }
 
+.nav {
+  /* transition: opacity 2s ease-in; */
+}
+
 .dark-background {
   background-color: #241d1d;
   /* background-color: #1d2124; */
@@ -32,6 +36,28 @@ body, html {
 
 .strokeme {
   -webkit-text-stroke: 1.5px var(--dark-text);
+}
+
+.strokeme-fixed {
+  position: relative;
+  /* We need double the stroke width because half of it gets covered up */
+  -webkit-text-stroke: 2.6px var(--dark-text);
+  font-weight: 600;
+}
+
+/* Place a second copy of the same text over top of the first */
+.strokeme-fixed::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  -webkit-text-stroke: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 536px) {
+  .strokeme-fixed::after {
+    bottom: 0px;
+  }
 }
 
 .garden, .floor, .tree {
@@ -63,6 +89,9 @@ body.dark .strokeme, html.dark .strokeme {
   -webkit-text-stroke: 1px var(--light-text);
 }
 
+body.dark .strokeme-fixed, html.dark .strokeme-fixed {
+  -webkit-text-stroke: 2.6px var(--light-text);
+}
 
 @layer utilities {
   .text-balance {
