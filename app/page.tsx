@@ -4,51 +4,51 @@ import PageContent from "@/components/PageContent";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import loading from "../public/loading.gif";
+import door from "../public/images/door.png";
+import doorDark from "../public/images/door-dark.png";
+import BackgroundImage from "@/components/BackgroundImage";
+import { useNavbarVisibility } from "./NavbarProvider";
 
-const NUMBER_OF_IMAGES = 5;
+const NUMBER_OF_IMAGES = 6;
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(NUMBER_OF_IMAGES);
+  const { setIsVisible } = useNavbarVisibility();
 
-  //const startTime: number = Date.now();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const response = () => {
+    setLoading(false);
+    document.body.style.overflow = "unset";
+    setIsVisible(true);
+  };
 
   useEffect(() => {
     console.log(`Images left: ${imagesLoaded}`);
-    // let timeoutId: NodeJS.Timeout;
+    let timeoutId: NodeJS.Timeout;
     if (imagesLoaded === 0) {
-      //   const endTime = Date.now();
-      //   const timeDiff = endTime - startTime;
+      timeoutId = setTimeout(() => {
+        response();
+      }, 2000);
 
-      //   // create delay if timeDiff < 2000
-      //   if (timeDiff < 2000) {
-      //     const delay = 2000 - timeDiff;
-      //     timeoutId = setTimeout(() => {
-      //       setLoading(false);
-      //     }, delay);
-      //   } else {
-      setLoading(false);
-      //   }
       window.scrollTo(0, 0);
     }
-    // return () => {
-    //   if (timeoutId) clearTimeout(timeoutId);
-    // };
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imagesLoaded]);
 
   // make page unscrollable when loading
-  useEffect(() => {
-    if (isLoading) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "unset";
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     document.body.style.overflow = "unset";
+  //     document.querySelector(".nav")?.classList.toggle("opacity-0");
+  //   }
 
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isLoading]);
+  //   return () => {
+  //     document.body.style.overflow = "unset";
+  //   };
+  // }, [isLoading]);
 
   return (
     <React.Fragment>
@@ -56,7 +56,7 @@ export default function Home() {
         initial={{ opacity: 1 }}
         animate={{ opacity: isLoading ? 1 : 0 }}
         transition={{ delay: 0.5, duration: 1.0, ease: "easeInOut" }}
-        className="absolute inset-0 transition-opacity ease-in-outp duration-1000"
+        className="absolute inset-0"
         style={{
           display: isLoading ? "block" : "none",
         }}
@@ -92,7 +92,16 @@ export default function Home() {
             setImagesLoaded={setImagesLoaded}
           />
           {/* <div className="absolute bg-contain bg-no-repeat h-[90vw] bottom-[270vw] left-[87vw] z-[0] bg-door-light dark:bg-door-dark border border-black"></div> */}
-          <div className="absolute bg-contain bg-no-repeat bottom-[130vw] h-[110vw] w-[110vw] left-[84vw] z-[-10] bg-door-light dark:bg-door-dark"></div>
+          <BackgroundImage
+            className="absolute bg-contain bg-no-repeat bottom-[152vw] h-[110vw] w-[110vw] left-[84vw] z-[-10] "
+            lightSrc={door}
+            darkSrc={doorDark}
+            imageProps={{
+              alt: "wooden door",
+            }}
+            imageCount={imagesLoaded}
+            updateFunction={setImagesLoaded}
+          />
         </motion.div>
       </div>
     </React.Fragment>

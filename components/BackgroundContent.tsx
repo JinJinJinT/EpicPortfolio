@@ -2,6 +2,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import BackgroundImage from "./BackgroundImage";
+import tree from "../public/images/tree.png";
+import treeDark from "../public/images/tree-dark.png";
+import grass from "../public/images/grass.png";
+import grassDark from "../public/images/grass-dark.png";
+import floor from "../public/images/floor.png";
+import floorDark from "../public/images/floor-dark.png";
+import sun from "../public/images/sun.png";
+import moon from "../public/images/moon.png";
+import cars from "../public/images/cars.png";
 
 export interface FlowDownProps {
   isLoading: boolean;
@@ -32,10 +41,9 @@ const BackgroundContent = ({
         >
           <BackgroundImage
             className="relative bg-contain bg-no-repeat h-[40vw] right-[4vw] z-[-30] m-0 p-0 opacity-70"
-            lightSrc="/images/tree.PNG"
-            darkSrc="/images/tree-dark.PNG"
+            lightSrc={tree}
+            darkSrc={treeDark}
             imageProps={{
-              priority: true,
               alt: "cherry blossom tree",
             }}
             updateFunction={setImagesLoaded}
@@ -43,56 +51,40 @@ const BackgroundContent = ({
           />
           <BackgroundImage
             className="relative bg-contain bg-no-repeat h-[42vw] bottom-[40vw] z-[-20] m-0 p-0 opacity-90"
-            lightSrc="/images/grass.PNG"
-            darkSrc="/images/grass-dark.PNG"
+            lightSrc={grass}
+            darkSrc={grassDark}
             imageProps={{
-              priority: true,
               alt: "Beautiful green japanese sand garden with grass and stone lamps",
-              onLoad: e => {
-                setImagesLoaded(imagesLoaded => imagesLoaded - 1);
-              },
             }}
             updateFunction={setImagesLoaded}
             imageCount={imagesLoaded}
           />
           <BackgroundImage
             className="relative bg-contain bg-no-repeat h-[42vw] bottom-[67vw] z-[-10] "
-            lightSrc="/images/floor.PNG"
-            darkSrc="/images/floor-dark.PNG"
+            lightSrc={floor}
+            darkSrc={floorDark}
             imageProps={{
-              priority: true,
               alt: "wooden floor",
-              onLoad: e => {
-                setImagesLoaded(imagesLoaded => imagesLoaded - 1);
-              },
             }}
             updateFunction={setImagesLoaded}
             imageCount={imagesLoaded}
           />
           <BackgroundImage
             className="relative bg-contain bg-no-repeat h-[15vw] bottom-[123vw] left-[1vw] z-[-30] opacity-60"
-            lightSrc="/images/sun.PNG"
-            darkSrc="/images/moon.PNG"
+            lightSrc={sun}
+            darkSrc={moon}
             imageProps={{
-              priority: true,
               alt: "sun or moon",
-              onLoad: e => {
-                setImagesLoaded(imagesLoaded => imagesLoaded - 1);
-              },
             }}
             updateFunction={setImagesLoaded}
             imageCount={imagesLoaded}
           />
           <BackgroundImage
             className="relative bg-contain bg-no-repeat h-[70vw] bottom-[143.5vw] left-[10vw] z-[0] "
-            lightSrc="/images/cars.PNG"
-            darkSrc="/images/cars.PNG"
+            lightSrc={cars}
+            darkSrc={cars}
             imageProps={{
-              priority: true,
               alt: "two cats cuddling on the floor taking a nap",
-              onLoad: e => {
-                setImagesLoaded(imagesLoaded => imagesLoaded - 1);
-              },
             }}
             updateFunction={setImagesLoaded}
             imageCount={imagesLoaded}
