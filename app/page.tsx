@@ -1,36 +1,108 @@
 "use client";
-import React from "react";
-import { AuroraBackgroundDemo } from "../components/AuroraBackground";
-import loading from "../public/loading.gif";
-import Image from "next/image";
-import BackgroundContent from "@/components/BackgroundContent";
+import React, { useEffect, useState } from "react";
+import PageContent from "@/components/PageContent";
 import { motion } from "framer-motion";
-import Head from "next/head";
+import NextImage from "next/image";
+import loading from "../public/loading.gif";
+import door from "../public/images/door.png";
+import doorDark from "../public/images/door-dark.png";
+import BackgroundImage from "@/components/BackgroundImage";
+import { useNavbarVisibility } from "./NavbarProvider";
 
-export default function Home({ isLoading }: { isLoading: boolean }) {
+const NUMBER_OF_IMAGES = 6;
+
+export default function Home() {
+  const [isLoading, setLoading] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(NUMBER_OF_IMAGES);
+  const { setIsVisible } = useNavbarVisibility();
+
+  const response = () => {
+    setLoading(false);
+    document.body.style.overflow = "unset";
+    setIsVisible(true);
+  };
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    if (imagesLoaded === 0) {
+      timeoutId = setTimeout(() => {
+        response();
+      }, 2000);
+
+      window.scrollTo(0, 0);
+    }
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imagesLoaded]);
+
+  // make page unscrollable when loading
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     document.body.style.overflow = "unset";
+  //     document.querySelector(".nav")?.classList.toggle("opacity-0");
+  //   }
+
+  //   return () => {
+  //     document.body.style.overflow = "unset";
+  //   };
+  // }, [isLoading]);
+
   return (
-    <section>
-      <article>
-        <div className="ml-7 mt-8">
-          <h1 className="text-6xl font-bold text-primary dark:text-secondary strokeme tracking-wider">
-            JIN<br></br>TERADA WHITE
-          </h1>
-        </div>
-        <div className="relative ml-7">
-          {" "}
-          {/* Changed to relative to position children absolutely with respect to this container */}
-          <h1 className="absolute text-2xl italic tracking-wider font-extralight dark:text-primary z-[-35]">
-            software engineer
-          </h1>
-          {/* this one is blue dark (neutral) */}
-          <div className="absolute top-[18px] w-[101vw] h-[50vw] bg-accent dark:bg-neutral z-[-40] opacity-90 left-[-9vw]"></div>
-          {/* <div className="absolute top-[18px] w-[101vw] h-[50vw] bg-accent dark:bg-neutral z-0 opacity-90 left-[-9vw]"></div>{" "} */}
-          {/* Reduced z-index to go behind the h1 */}
-        </div>
-      </article>
-      <article>
-        <BackgroundContent isLoading={isLoading} />
-      </article>
-    </section>
+    <React.Fragment>
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: isLoading ? 1 : 0 }}
+        transition={{ delay: 0.5, duration: 1.0, ease: "easeInOut" }}
+        className="absolute inset-0"
+        style={{
+          display: isLoading ? "block" : "none",
+        }}
+      >
+        <NextImage
+          src={loading}
+          alt="cute kitten gif covering its eyes over four frames of animation"
+          quality={100}
+          sizes="0.5vw"
+          style={{
+            objectFit: "contain",
+            height: "100%",
+            width: "95%",
+            scale: "35%",
+          }}
+          className="inset-0"
+          priority={true}
+          unoptimized={true}
+        />
+      </motion.div>
+
+      <div className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          // whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: isLoading ? 0 : 1, y: isLoading ? 40 : 0 }}
+          transition={{ delay: 0.5, duration: 1.0, ease: "easeInOut" }}
+          className=""
+        >
+          <PageContent
+            isLoading={isLoading}
+            imagesLoaded={imagesLoaded}
+            setImagesLoaded={setImagesLoaded}
+          />
+          {/* <div className="absolute bg-contain bg-no-repeat h-[90vw] bottom-[270vw] left-[87vw] z-[0] bg-door-light dark:bg-door-dark border border-black"></div> */}
+          <BackgroundImage
+            className="absolute bg-contain bg-no-repeat bottom-[152vw] h-[100vw] w-[100vw] left-[87vw] z-[-10] "
+            lightSrc={door}
+            darkSrc={doorDark}
+            imageProps={{
+              alt: "wooden door",
+            }}
+            imageCount={imagesLoaded}
+            updateFunction={setImagesLoaded}
+          />
+        </motion.div>
+      </div>
+    </React.Fragment>
   );
 }

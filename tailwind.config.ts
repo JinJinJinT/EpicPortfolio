@@ -28,6 +28,10 @@ const config: Config = {
             backgroundPosition: "350% 50%, 350% 50%",
           },
         },
+        fadein: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
