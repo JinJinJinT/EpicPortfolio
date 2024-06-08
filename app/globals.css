@@ -41,7 +41,7 @@ body, html {
 .strokeme-fixed {
   position: relative;
   /* We need double the stroke width because half of it gets covered up */
-  -webkit-text-stroke: 2.9px black;
+  -webkit-text-stroke: 2.6px var(--dark-text);
   font-weight: 600;
 }
 
@@ -87,6 +87,10 @@ body, html {
 
 body.dark .strokeme, html.dark .strokeme {
   -webkit-text-stroke: 1px var(--light-text);
+}
+
+body.dark .strokeme-fixed, html.dark .strokeme-fixed {
+  -webkit-text-stroke: 2.6px var(--light-text);
 }
 
 @layer utilities {

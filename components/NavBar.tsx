@@ -41,7 +41,7 @@ function JapaneseNavBar() {
             <li>
               <a
                 href="#"
-                className="hover:text-pink-300 dark:text-base-100 dark:hover:text-orange-500 transition-none exclude-transition text-md md:text-2xl lg:text-3xl"
+                className="text-secondary hover:text-pink-300 dark:text-base-100 dark:hover:text-orange-500 transition-none exclude-transition text-md md:text-2xl lg:text-3xl"
                 target="_blank"
                 rel="noopener noreferrer"
               >

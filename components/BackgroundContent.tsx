@@ -75,6 +75,7 @@ const BackgroundContent = ({
             darkSrc={moon}
             imageProps={{
               alt: "sun or moon",
+              objectFit: "contain",
             }}
             updateFunction={setImagesLoaded}
             imageCount={imagesLoaded}
@@ -101,13 +102,13 @@ const BackgroundContent = ({
           }}
         >
           <article className="absolute flex flex-col gap-4 items-center justify-center w-[70vw] left-[10vw] bottom-[145vw] md:bottom-[175vw] z-[50]">
-            <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
+            <div className="text-3xl md:text-7xl font-bold text-secondary dark:text-primary text-center">
               Portfolio Development In Progress!
             </div>
-            <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+            <div className="font-extralight text-secondary md:text-4xl dark:text-primary py-4">
               Check Back Soon!
             </div>
-            <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+            <button className="bg-secondary dark:bg-primary rounded-full w-fit text-primary dark:text-secondary px-4 py-2">
               <a
                 href="https://github.com/JinJinJinT/EpicPortfolio"
                 target="_blank"

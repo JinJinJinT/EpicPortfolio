@@ -11,7 +11,7 @@ const PageContent = ({
       <article>
         <div className="ml-7 mt-8">
           <h1
-            className="text-6xl font-bold text-primary dark:text-secondary strokeme-fixed tracking-wider"
+            className="text-6xl font-bold text-primary dark:text-secondary strokeme tracking-wider"
             data-text="JIN"
           >
             JIN

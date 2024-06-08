@@ -51,11 +51,17 @@ const BackgroundImage = ({
   const imagePropsLight: ImageProps = {
     ...imageProps,
     src: lightSrc,
+    style: {
+      width: "auto",
+    },
     priority: true,
     onLoad: () => handleLoad(lightImageRef, imageCount, updateFunction),
   };
   const imagePropsDark: ImageProps = {
     ...imageProps,
+    style: {
+      width: "auto",
+    },
     src: darkSrc,
     priority: true,
     onLoad: () => handleLoad(darkImageRef, imageCount, updateFunction),

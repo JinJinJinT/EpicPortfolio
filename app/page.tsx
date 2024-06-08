@@ -23,7 +23,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log(`Images left: ${imagesLoaded}`);
     let timeoutId: NodeJS.Timeout;
     if (imagesLoaded === 0) {
       timeoutId = setTimeout(() => {
@@ -93,7 +92,7 @@ export default function Home() {
           />
           {/* <div className="absolute bg-contain bg-no-repeat h-[90vw] bottom-[270vw] left-[87vw] z-[0] bg-door-light dark:bg-door-dark border border-black"></div> */}
           <BackgroundImage
-            className="absolute bg-contain bg-no-repeat bottom-[152vw] h-[110vw] w-[110vw] left-[84vw] z-[-10] "
+            className="absolute bg-contain bg-no-repeat bottom-[152vw] h-[100vw] w-[100vw] left-[87vw] z-[-10] "
             lightSrc={door}
             darkSrc={doorDark}
             imageProps={{
