@@ -4,29 +4,18 @@ import PageContent from "@/components/PageContent";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import loading from "../public/loading.gif";
-import door from "../public/images/door.png";
-import doorDark from "../public/images/door-dark.png";
 import BackgroundImage from "@/components/BackgroundImage";
-import { useNavbarVisibility } from "./NavbarProvider";
-
-const NUMBER_OF_IMAGES = 6;
+import { useAppContext } from "./ContextProvider";
 
 export default function Home() {
-  const [isLoading, setLoading] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(NUMBER_OF_IMAGES);
-  const { setIsVisible } = useNavbarVisibility();
-
-  const response = () => {
-    setLoading(false);
-    document.body.style.overflow = "unset";
-    setIsVisible(true);
-  };
+  // const [isLoading, setLoading] = useState(false);
+  const { imagesLeft } = useAppContext();
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-    if (imagesLoaded === 0) {
+    if (imagesLeft === 0) {
       timeoutId = setTimeout(() => {
-        response();
+        document.body.style.overflow = "unset";
       }, 2000);
 
       window.scrollTo(0, 0);
@@ -34,30 +23,18 @@ export default function Home() {
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [imagesLoaded]);
-
-  // make page unscrollable when loading
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     document.body.style.overflow = "unset";
-  //     document.querySelector(".nav")?.classList.toggle("opacity-0");
-  //   }
-
-  //   return () => {
-  //     document.body.style.overflow = "unset";
-  //   };
-  // }, [isLoading]);
+  }, [imagesLeft]);
 
   return (
     <React.Fragment>
       <motion.div
         initial={{ opacity: 1 }}
-        animate={{ opacity: isLoading ? 1 : 0 }}
+        animate={{ opacity: imagesLeft !== 0 ? 1 : 0 }}
         transition={{ delay: 0.5, duration: 1.0, ease: "easeInOut" }}
         className="absolute inset-0"
         style={{
-          display: isLoading ? "block" : "none",
+          display: imagesLeft !== 0 ? "block" : "none",
+          // display: "none",
         }}
       >
         <NextImage
@@ -77,30 +54,19 @@ export default function Home() {
         />
       </motion.div>
 
-      <div className="relative">
+      <div className="relative border-[1px] border-blue-500 border-blue h-full w-full">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           // whileInView={{ opacity: 1, y: 0 }}
-          animate={{ opacity: isLoading ? 0 : 1, y: isLoading ? 40 : 0 }}
+          animate={{
+            opacity: imagesLeft !== 0 ? 0 : 1,
+            y: imagesLeft !== 0 ? 40 : 0,
+          }}
           transition={{ delay: 0.5, duration: 1.0, ease: "easeInOut" }}
           className=""
         >
-          <PageContent
-            isLoading={isLoading}
-            imagesLoaded={imagesLoaded}
-            setImagesLoaded={setImagesLoaded}
-          />
+          <PageContent />
           {/* <div className="absolute bg-contain bg-no-repeat h-[90vw] bottom-[270vw] left-[87vw] z-[0] bg-door-light dark:bg-door-dark border border-black"></div> */}
-          <BackgroundImage
-            className="absolute bg-contain bg-no-repeat bottom-[152vw] h-[100vw] w-[100vw] left-[87vw] z-[-10] "
-            lightSrc={door}
-            darkSrc={doorDark}
-            imageProps={{
-              alt: "wooden door",
-            }}
-            imageCount={imagesLoaded}
-            updateFunction={setImagesLoaded}
-          />
         </motion.div>
       </div>
     </React.Fragment>

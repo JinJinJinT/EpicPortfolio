@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
-import Image, { getImageProps, ImageProps, StaticImageData } from "next/image";
-import { handleClientScriptLoad } from "next/script";
-
-const [WIDTH, HEIGHT] = [3400, 1300];
+import Image, { ImageProps, StaticImageData } from "next/image";
+import { useAppContext } from "@/app/ContextProvider";
 
 // omit src, width, height from ImageProps
 type ModifiedImageProps = Omit<ImageProps, "src">;
@@ -12,26 +10,26 @@ interface BackgroundImageProps {
   lightSrc: StaticImageData;
   darkSrc: StaticImageData;
   imageProps: ModifiedImageProps;
-  imageCount: number;
-  updateFunction: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const handleLoad = (
   ref: React.RefObject<HTMLImageElement>,
-  imageCount: number,
+  imagesLeft: number,
   updateFunction: React.Dispatch<React.SetStateAction<number>>
+  // Update the type of updateFunction parameter
 ) => {
   //   console.log("Image loaded");
   if (ref.current) {
-    //     const { naturalWidth, naturalHeight } = ref.current;
-    //     // set width and height
-    //     // ref.current.width = naturalWidth;
-    //     // ref.current.height = naturalHeight;
-    //     console.log(`Image loaded: ${imageCount}`);
-    //     console.log(`width: ${naturalWidth}, height: ${naturalHeight}`);
-    // set image count
     if (ref.current.classList.contains("light-image")) {
-      updateFunction((imageCount: number) => imageCount - 1);
+      if (imagesLeft === 1) {
+        setTimeout(() => {
+          updateFunction((imageCount: number) =>
+            imageCount <= 0 ? 0 : imageCount - 1
+          );
+        }, 2000);
+      } else {
+        updateFunction((imageCount: number) => imageCount - 1);
+      }
     }
   }
 };
@@ -41,11 +39,11 @@ const BackgroundImage = ({
   lightSrc,
   darkSrc,
   imageProps,
-  imageCount,
-  updateFunction,
 }: BackgroundImageProps) => {
   const lightImageRef = useRef<HTMLImageElement>(null);
   const darkImageRef = useRef<HTMLImageElement>(null);
+
+  const { imagesLeft, setImagesLeft } = useAppContext();
 
   // create copy of imageProps
   const imagePropsLight: ImageProps = {
@@ -55,7 +53,7 @@ const BackgroundImage = ({
       width: "auto",
     },
     priority: true,
-    onLoad: () => handleLoad(lightImageRef, imageCount, updateFunction),
+    onLoad: () => handleLoad(lightImageRef, imagesLeft, setImagesLeft),
   };
   const imagePropsDark: ImageProps = {
     ...imageProps,
@@ -64,11 +62,8 @@ const BackgroundImage = ({
     },
     src: darkSrc,
     priority: true,
-    onLoad: () => handleLoad(darkImageRef, imageCount, updateFunction),
+    onLoad: () => handleLoad(darkImageRef, imagesLeft, setImagesLeft),
   };
-
-  //   const lightStyle = getImageSetStyle(imagePropsLight);
-  //   const darkStyle = getImageSetStyle(imagePropsDark);
 
   return (
     <React.Fragment>
@@ -89,24 +84,5 @@ const BackgroundImage = ({
     </React.Fragment>
   );
 };
-
-// function getBackgroundImage(srcSet = "") {
-//   const imageSet = srcSet
-//     .split(", ")
-//     .map(str => {
-//       const [url, dpi] = str.split(" ");
-//       return `url("${url}") ${dpi}`;
-//     })
-//     .join(", ");
-//   return `image-set(${imageSet})`;
-// }
-
-// function getImageSetStyle(props: ImageProps) {
-//   const {
-//     props: { srcSet },
-//   } = getImageProps(props);
-//   const backgroundImage = getBackgroundImage(srcSet);
-//   return { backgroundImage };
-// }
 
 export default BackgroundImage;

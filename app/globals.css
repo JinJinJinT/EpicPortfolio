@@ -54,7 +54,7 @@ body, html {
   pointer-events: none;
 }
 
-@media (max-width: 536px) {
+@media (max-width: 540px) {
   .strokeme-fixed::after {
     bottom: 0px;
   }

@@ -2,7 +2,7 @@
 import React from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { motion } from "framer-motion";
-import { useNavbarVisibility } from "@/app/NavbarProvider";
+import { useAppContext } from "@/app/ContextProvider";
 
 // export function NavbarDemo() {
 //   return (
@@ -13,15 +13,18 @@ import { useNavbarVisibility } from "@/app/NavbarProvider";
 // }
 
 export function NavBar() {
-  const { isVisible } = useNavbarVisibility();
+  const { imagesLeft } = useAppContext();
 
   return (
-    <div className="top-2 relative w-full items-center justify-center mt-4">
+    <div className="top-2 relative w-full items-center justify-center mt-4 z-[70]">
       <motion.div
         className="nav"
         initial={{ opacity: 0, y: -60 }}
-        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -60 }}
-        transition={{ duration: 1.4, delay: 3 }} // Customize the duration as needed
+        animate={{
+          opacity: imagesLeft === 0 ? 1 : 0,
+          y: imagesLeft === 0 ? 0 : -60,
+        }}
+        transition={{ duration: 1.5, delay: 1 }} // Customize the duration as needed
       >
         <JapaneseNavBar />
       </motion.div>
