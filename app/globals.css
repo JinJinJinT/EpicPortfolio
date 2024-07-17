@@ -85,6 +85,14 @@ body, html {
   right: 200vw; */
 }
 
+.final-ttt-cell {
+  background-color: antiquewhite;
+}
+
+html.dark .final-ttt-cell {
+  background-color: darkslategrey;
+}
+
 body.dark .strokeme, html.dark .strokeme {
   -webkit-text-stroke: 1px var(--light-text);
 }

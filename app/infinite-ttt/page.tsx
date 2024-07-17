@@ -13,7 +13,7 @@ const Page = () => {
 
   stagedBoard.cells.forEach(row => {
     for (let i = 0; i < 3; i++) {
-      row.push({ value: "⠀", timeout: MAX_TIMEOUT });
+      row.push({ value: "⠀", timeout: MAX_TIMEOUT, isFinal: false });
     }
   });
 
@@ -95,7 +95,11 @@ const Page = () => {
               if (newBoard.cells[i][j].timeout === 0) {
                 newBoard.cells[i][j].value = "⠀";
                 newBoard.cells[i][j].timeout = MAX_TIMEOUT;
+                newBoard.cells[i][j].isFinal = false;
               } else {
+                if (newBoard.cells[i][j].timeout === 1) {
+                  newBoard.cells[i][j].isFinal = true;
+                }
                 newBoard.cells[i][j].timeout--;
               }
             }
@@ -153,7 +157,9 @@ const Page = () => {
             row.map((cell, colIndex) => (
               <div
                 key={`${rowIndex}-${colIndex}`}
-                className="bg-white dark:bg-stone-700 border border-gray-400 flex items-center justify-center text-2xl dark:text-base-100 font-bold cursor-pointer z-10"
+                className={`bg-white dark:bg-stone-700 border border-gray-400 flex items-center justify-center text-2xl dark:text-base-100 font-bold cursor-pointer ${
+                  cell.isFinal && "final-ttt-cell"
+                }`}
                 onClick={() => handleMove(rowIndex, colIndex)}
               >
                 {cell.value}

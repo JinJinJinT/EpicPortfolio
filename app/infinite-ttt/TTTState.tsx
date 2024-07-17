@@ -1,6 +1,7 @@
 export interface Cell {
   value: "X" | "O" | "⠀";
   timeout: number;
+  isFinal: boolean;
 }
 
 export interface Board {
